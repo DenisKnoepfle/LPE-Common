@@ -13,6 +13,7 @@
 package org.lpe.common.jmeter;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -23,7 +24,10 @@ import java.util.Properties;
 import org.lpe.common.jmeter.IO.DynamicPipedInputStream;
 import org.lpe.common.jmeter.IO.FilePoller;
 import org.lpe.common.jmeter.config.JMeterWorkloadConfig;
+import org.lpe.common.util.LpeStreamUtils;
 import org.lpe.common.util.system.LpeSystemUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wrapper class which handles the connection to JMeter console process.
@@ -39,7 +43,7 @@ public final class JMeterWrapper {
 	/**
 	 * location of the JMeter bin folder
 	 */
-	private org.lpe.common.util.system.Process jmeterProcess;
+	private Process jmeterProcess;
 
 	private DynamicPipedInputStream logStream;
 
@@ -47,6 +51,8 @@ public final class JMeterWrapper {
 	 * Singleton instance.
 	 */
 	private static JMeterWrapper instance;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(JMeterWrapper.class);
 
 	private JMeterWrapper() {
 		// create the stream to provide log from JMETER
@@ -88,14 +94,28 @@ public final class JMeterWrapper {
 		List<String> cmd = buildCmdLine(config,
 										logFile);
 
-		org.lpe.common.util.system.ProcessBuilder pb = new org.lpe.common.util.system.ProcessBuilder(cmd);
+		ProcessBuilder pb = new ProcessBuilder(cmd);
 		pb.directory(new File(config.getPathToJMeterRootFolder()));
-		// output needs to be redirected
-		pb.redirectOutput(new File(config.getPathToJMeterRootFolder().concat("\\" + config.getDefaultOutputFile())));
-		// the error stream must be piped, otherwise noone takes the messages and JMeter waits to infinity
+
+		// the error stream must be piped, otherwise none takes the messages and JMeter waits to infinity
 		// till someone receives the messages!
 		pb.redirectErrorStream(true);
 		jmeterProcess = pb.start();
+		// output needs to be redirected
+		final InputStream is = jmeterProcess.getInputStream();
+		File outputFile = new File(config.getPathToJMeterRootFolder().concat("\\" + config.getDefaultOutputFile()));
+		final FileOutputStream fos = new FileOutputStream(outputFile);
+		LpeSystemUtils.submitTask(new Runnable() {
+			
+			@Override
+			public void run() {
+				try {
+					LpeStreamUtils.pipe(is, fos);
+				} catch (IOException e) {
+					LOGGER.debug("Error while piping console output to file", e);
+				}
+			}
+		});
 
 		// poll the log file
 		final FilePoller poll = new FilePoller(logFile, logStream, true);
