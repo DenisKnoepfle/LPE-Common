@@ -79,8 +79,12 @@ public final class CSVRandomizer {
 	 *            deterministic results.
 	 */
 	public static void randomizeCSV(File src, File dest, double outputSizeMultiplicator, int seed) {
-		ArrayList<String> lines = new ArrayList<>();
-		try (FileReader fr = new FileReader(src); BufferedReader br = new BufferedReader(fr);) {
+		ArrayList<String> lines = new ArrayList<String>();
+		FileReader fr = null;
+		BufferedReader br = null;
+		try {
+			fr = new FileReader(src);
+			br = new BufferedReader(fr);
 
 			String line = br.readLine();
 			while (line != null) {
@@ -90,6 +94,14 @@ public final class CSVRandomizer {
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
 		}
 
 		try {
@@ -100,7 +112,9 @@ public final class CSVRandomizer {
 
 		Random rnd = new Random(seed);
 
-		try (FileWriter fw = new FileWriter(dest);) {
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(dest);
 
 			int outputLineCount = (int) Math.ceil(outputSizeMultiplicator * lines.size());
 
@@ -113,6 +127,14 @@ public final class CSVRandomizer {
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
+		} finally {
+			if (fw != null) {
+				try {
+					fw.close();
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
 		}
 	}
 }

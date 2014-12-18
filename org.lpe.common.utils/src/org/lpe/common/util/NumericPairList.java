@@ -38,7 +38,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * Construcotr.
 	 */
 	public NumericPairList() {
-		pairs = new ArrayList<>();
+		pairs = new ArrayList<NumericPair<T, S>>();
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of keys
 	 */
 	public List<T> getKeyList() {
-		List<T> keys = new ArrayList<>();
+		List<T> keys = new ArrayList<T>();
 		for (NumericPair<T, S> np : getPairs()) {
 			keys.add(np.getKey());
 		}
@@ -79,7 +79,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of values
 	 */
 	public List<S> getValueList() {
-		List<S> values = new ArrayList<>();
+		List<S> values = new ArrayList<S>();
 		for (NumericPair<T, S> np : getPairs()) {
 			values.add(np.getValue());
 		}
@@ -91,7 +91,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of keys as numbers
 	 */
 	public List<Number> getKeyListAsNumbers() {
-		List<Number> keys = new ArrayList<>();
+		List<Number> keys = new ArrayList<Number>();
 		for (NumericPair<T, S> np : getPairs()) {
 			keys.add(np.getKey());
 		}
@@ -103,7 +103,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of values as numbers
 	 */
 	public List<Number> getValueListAsNumbers() {
-		List<Number> values = new ArrayList<>();
+		List<Number> values = new ArrayList<Number>();
 		for (NumericPair<T, S> np : getPairs()) {
 			values.add(np.getValue());
 		}
@@ -116,7 +116,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of keys as number multiplied with the scale factor
 	 */
 	public List<Number> getKeyListAsNumbers(double scaleFactor) {
-		List<Number> keys = new ArrayList<>();
+		List<Number> keys = new ArrayList<Number>();
 		for (NumericPair<T, S> np : getPairs()) {
 			keys.add(np.getKey().doubleValue() * scaleFactor);
 		}
@@ -129,7 +129,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of values as number multiplied with the scale factor
 	 */
 	public List<Number> getValueListAsNumbers(double scaleFactor) {
-		List<Number> values = new ArrayList<>();
+		List<Number> values = new ArrayList<Number>();
 		for (NumericPair<T, S> np : getPairs()) {
 			values.add(np.getValue().doubleValue() * scaleFactor);
 		}
@@ -141,7 +141,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of keys as double
 	 */
 	public List<Double> getKeyListAsDouble() {
-		List<Double> keys = new ArrayList<>();
+		List<Double> keys = new ArrayList<Double>();
 		for (NumericPair<T, S> np : getPairs()) {
 			keys.add(np.getKey().doubleValue());
 		}
@@ -153,7 +153,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of values as double
 	 */
 	public List<Double> getValueListAsDouble() {
-		List<Double> values = new ArrayList<>();
+		List<Double> values = new ArrayList<Double>();
 		for (NumericPair<T, S> np : getPairs()) {
 			values.add(np.getValue().doubleValue());
 		}
@@ -224,7 +224,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of keys as double multiplied with the scale factor
 	 */
 	public List<Double> getKeyListAsDouble(double scaleFactor) {
-		List<Double> keys = new ArrayList<>();
+		List<Double> keys = new ArrayList<Double>();
 		for (NumericPair<T, S> np : getPairs()) {
 			keys.add(np.getKey().doubleValue() * scaleFactor);
 		}
@@ -237,7 +237,7 @@ public class NumericPairList<T extends Number, S extends Number> implements Iter
 	 * @return list of values as double multiplied with the scale factor
 	 */
 	public List<Double> getValueListAsDouble(double scaleFactor) {
-		List<Double> values = new ArrayList<>();
+		List<Double> values = new ArrayList<Double>();
 		for (NumericPair<T, S> np : getPairs()) {
 			values.add(np.getValue().doubleValue() * scaleFactor);
 		}

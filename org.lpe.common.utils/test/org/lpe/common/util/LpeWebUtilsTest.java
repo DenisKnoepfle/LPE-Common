@@ -34,7 +34,7 @@ public class LpeWebUtilsTest {
 	static AtomicInteger done = new AtomicInteger();
 
 	public static void startServer(int poolsize) {
-		List<String> packages = new ArrayList<>();
+		List<String> packages = new ArrayList<String>();
 		packages.add("org.lpe.common.util.dummy");
 		WebServer.getInstance().start(8124, "", packages, poolsize, poolsize);
 	}

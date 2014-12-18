@@ -388,7 +388,7 @@ public final class LpeFileUtils {
 	 * @return a set of full file names
 	 */
 	public static List<String> getAllFiles(String directory) {
-		List<String> resultList = new ArrayList<>();
+		List<String> resultList = new ArrayList<String>();
 		getAllFiles(new File(directory), resultList);
 		return resultList;
 	}

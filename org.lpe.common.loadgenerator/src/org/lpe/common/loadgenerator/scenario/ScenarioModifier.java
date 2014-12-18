@@ -66,9 +66,9 @@ public class ScenarioModifier {
 
 	private LGWorkloadConfig lrConfig;
 
-	private LinkedList<String> groupNames = new LinkedList<>();
+	private LinkedList<String> groupNames = new LinkedList<String>();
 
-	private HashMap<String, Integer> groupUserNums = new HashMap<>();
+	private HashMap<String, Integer> groupUserNums = new HashMap<String, Integer>();
 
 	/**
 	 * Modifies the scenario file according to the passed workload
@@ -169,7 +169,7 @@ public class ScenarioModifier {
 	private void generateWorkloadGroups(LinkedList<String> currentTags, BufferedReader reader, StringBuilder writeBuffer)
 			throws IOException {
 
-		LinkedList<String> scriptNames = new LinkedList<>();
+		LinkedList<String> scriptNames = new LinkedList<String>();
 
 		// skip old workload config and find group and script names
 		String line = null;

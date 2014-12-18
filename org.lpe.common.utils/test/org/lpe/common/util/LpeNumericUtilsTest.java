@@ -226,49 +226,49 @@ public class LpeNumericUtilsTest {
 	@Test
 	public void testListConversion() {
 
-		List<Float> fList = new ArrayList<>();
+		List<Float> fList = new ArrayList<Float>();
 		fList.add(1.0f);
 		fList.add(2.2f);
 		fList.add(3.4f);
 		fList.add(4.6f);
 		fList.add(5.0f);
 		
-		List<Float> fListExpected = new ArrayList<>();
+		List<Float> fListExpected = new ArrayList<Float>();
 		fListExpected.add(1.0f);
 		fListExpected.add(2.0f);
 		fListExpected.add(3.0f);
 		fListExpected.add(4.0f);
 		fListExpected.add(5.0f);
 
-		List<Double> dList = new ArrayList<>();
+		List<Double> dList = new ArrayList<Double>();
 		dList.add(1.0);
 		dList.add(2.2);
 		dList.add(3.4);
 		dList.add(4.6);
 		dList.add(5.0);
 		
-		List<Double> dListExpected = new ArrayList<>();
+		List<Double> dListExpected = new ArrayList<Double>();
 		dListExpected.add(1.0);
 		dListExpected.add(2.0);
 		dListExpected.add(3.0);
 		dListExpected.add(4.0);
 		dListExpected.add(5.0);
 
-		List<Integer> iList = new ArrayList<>();
+		List<Integer> iList = new ArrayList<Integer>();
 		iList.add(1);
 		iList.add(2);
 		iList.add(3);
 		iList.add(4);
 		iList.add(5);
 
-		List<Long> lList = new ArrayList<>();
+		List<Long> lList = new ArrayList<Long>();
 		lList.add(1L);
 		lList.add(2L);
 		lList.add(3L);
 		lList.add(4L);
 		lList.add(5L);
 		
-		List<Short> sList = new ArrayList<>();
+		List<Short> sList = new ArrayList<Short>();
 		sList.add((short)1);
 		sList.add((short)2);
 		sList.add((short)3);

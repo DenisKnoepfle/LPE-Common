@@ -364,7 +364,7 @@ public final class LpeNumericUtils {
 	 */
 	public static <T extends Number> NumericPairList<Double, T> removeNoiseInKeys(NumericPairList<Double, T> list,
 			double noiseThreshold, int windowSize) {
-		NumericPairList<Double, T> result = new NumericPairList<>();
+		NumericPairList<Double, T> result = new NumericPairList<Double, T>();
 
 		double[] noiseMetrics = new double[list.size()];
 		double maxNoise = Double.MIN_VALUE;
@@ -416,7 +416,7 @@ public final class LpeNumericUtils {
 	 */
 	public static <T extends Number> NumericPairList<T, Double> removeNoiseInValues(NumericPairList<T, Double> list,
 			double noiseThreshold, double percentile, int windowSize) {
-		NumericPairList<T, Double> result = new NumericPairList<>();
+		NumericPairList<T, Double> result = new NumericPairList<T, Double>();
 		if (noiseThreshold > 0) {
 			double[] noiseMetrics = new double[list.size()];
 			double maxNoise = Double.MIN_VALUE;
@@ -463,7 +463,7 @@ public final class LpeNumericUtils {
 				}
 			}
 
-			List<Double> noisemetricsList = new ArrayList<>();
+			List<Double> noisemetricsList = new ArrayList<Double>();
 			for (int i = 0; i < noiseMetrics.length; i++) {
 				noiseMetrics[i] = noiseMetrics[i] / maxNoise;
 				noisemetricsList.add(noiseMetrics[i]);
@@ -610,7 +610,7 @@ public final class LpeNumericUtils {
 	@SuppressWarnings("unchecked")
 	public static <A extends Number, B extends Number> List<B> convertList(List<A> values, Class<B> targetType) {
 		LpeSupportedTypes lpeType = LpeSupportedTypes.get(targetType);
-		List<B> bList = new ArrayList<>();
+		List<B> bList = new ArrayList<B>();
 		switch (lpeType) {
 		case Double:
 			for (A a : values) {

@@ -60,7 +60,7 @@ public final class ServerLauncher {
 		parseArgs(args);
 
 		if (args[0].equalsIgnoreCase("start")) {
-			List<String> servicePackages = new ArrayList<>();
+			List<String> servicePackages = new ArrayList<String>();
 			servicePackages.add("org.lpe.common.loadgenerator.service");
 			WebServer.getInstance().start(port, "", servicePackages);
 		} else if (args[0].equalsIgnoreCase("shutdown")) {

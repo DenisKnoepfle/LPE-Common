@@ -25,7 +25,7 @@ public class LGMeasurementData {
 	 */
 	public Map<String, List<TimeSpan>> getTransactionTimes() {
 		if (transactionTimes == null) {
-			transactionTimes = new HashMap<>();
+			transactionTimes = new HashMap<String, List<TimeSpan>>();
 		}
 		return transactionTimes;
 	}
@@ -55,7 +55,7 @@ public class LGMeasurementData {
 		if (getTransactionTimes().containsKey(transactionName)) {
 			timesList = getTransactionTimes().get(transactionName);
 		} else {
-			timesList = new ArrayList<>();
+			timesList = new ArrayList<TimeSpan>();
 			getTransactionTimes().put(transactionName, timesList);
 		}
 		timesList.add(new TimeSpan(startTimestamp, stopTimestamp));

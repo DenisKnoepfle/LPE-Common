@@ -100,7 +100,7 @@ public class IQROutlierDetector extends AbstractOutlierDetector {
 		double lowerRange = firstQuartile - iqrFactor * iqr;
 		double higherRange = thirdQuartile + iqrFactor * iqr;
 
-		NumericPairList<Double, T> result = new NumericPairList<>();
+		NumericPairList<Double, T> result = new NumericPairList<Double, T>();
 
 		for (NumericPair<Double, T> pair : list) {
 			if (pair.getKey() <= higherRange && pair.getKey() >= lowerRange) {
@@ -129,7 +129,7 @@ public class IQROutlierDetector extends AbstractOutlierDetector {
 		double lowerRange = firstQuartile - iqrFactor * iqr;
 		double higherRange = thirdQuartile + iqrFactor * iqr;
 
-		NumericPairList<T, Double> result = new NumericPairList<>();
+		NumericPairList<T, Double> result = new NumericPairList<T, Double>();
 
 		for (NumericPair<T, Double> pair : list) {
 			if (pair.getValue() <= higherRange && pair.getValue() >= lowerRange) {

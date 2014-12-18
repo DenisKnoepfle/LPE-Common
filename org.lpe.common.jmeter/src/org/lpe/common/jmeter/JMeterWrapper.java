@@ -39,7 +39,7 @@ public final class JMeterWrapper {
 	/**
 	 * location of the JMeter bin folder
 	 */
-	private Process jmeterProcess;
+	private org.lpe.common.util.system.Process jmeterProcess;
 
 	private DynamicPipedInputStream logStream;
 
@@ -88,7 +88,7 @@ public final class JMeterWrapper {
 		List<String> cmd = buildCmdLine(config,
 										logFile);
 
-		ProcessBuilder pb = new ProcessBuilder(cmd);
+		org.lpe.common.util.system.ProcessBuilder pb = new org.lpe.common.util.system.ProcessBuilder(cmd);
 		pb.directory(new File(config.getPathToJMeterRootFolder()));
 		// output needs to be redirected
 		pb.redirectOutput(new File(config.getPathToJMeterRootFolder().concat("\\" + config.getDefaultOutputFile())));
